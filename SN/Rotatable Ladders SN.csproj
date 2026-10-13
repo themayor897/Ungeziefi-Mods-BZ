@@ -1,27 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
-        <AssemblyName>Rotatable_Ladders</AssemblyName>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <LangVersion>11</LangVersion>
+        <Game>SN</Game>
+        <GameDir>$(SubnauticaDir)</GameDir>
         <RootNamespace>Ungeziefi.Rotatable_Ladders</RootNamespace>
-
-        <RestoreAdditionalProjectSources>
-            https://api.nuget.org/v3/index.json;
-            https://nuget.bepinex.dev/v3/index.json;
-        </RestoreAdditionalProjectSources>
-
-        <NoWarn>NU1903</NoWarn>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="..\src\**\*.cs" LinkBase="src"/>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
@@ -42,11 +29,8 @@
 
     <ItemGroup>
         <Reference Include="DOTween">
-            <HintPath>DOTween\DOTween.dll</HintPath>
+            <HintPath>..\DOTween\DOTween.dll</HintPath>
         </Reference>
     </ItemGroup>
 
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="&quot;$(SolutionDir)/deploy.sh&quot; &quot;$(TargetName)&quot; &quot;$(TargetPath)&quot; &quot;$(SolutionDir)&quot;" />
-    </Target>
 </Project>

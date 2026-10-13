@@ -1,0 +1,22 @@
+<Project>
+
+    <!-- Settings shared by the Subnautica and Below Zero projects -->
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <AssemblyName>Rotatable_Ladders</AssemblyName>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>11</LangVersion>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <NoWarn>NU1903</NoWarn>
+
+        <RestoreAdditionalProjectSources>
+            https://api.nuget.org/v3/index.json;
+            https://nuget.bepinex.dev/v3/index.json;
+        </RestoreAdditionalProjectSources>
+    </PropertyGroup>
+
+    <!-- Optional, not committed: set SubnauticaDir / BelowZeroDir to copy builds into a game install -->
+    <Import Project="$(MSBuildThisFileDirectory)Directory.Build.local.props"
+            Condition="Exists('$(MSBuildThisFileDirectory)Directory.Build.local.props')"/>
+
+</Project>

@@ -1,0 +1,7 @@
+bin/
+obj/
+Release/
+.idea/
+.vs/
+*.user
+Directory.Build.local.props

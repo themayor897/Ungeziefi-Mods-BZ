@@ -1,0 +1,7 @@
+<!-- Copy to Directory.Build.local.props (ignored by git) and set the game folders you want builds copied into. -->
+<Project>
+    <PropertyGroup>
+        <SubnauticaDir>C:\Program Files (x86)\Steam\steamapps\common\Subnautica</SubnauticaDir>
+        <BelowZeroDir>C:\Program Files (x86)\Steam\steamapps\common\SubnauticaZero</BelowZeroDir>
+    </PropertyGroup>
+</Project>

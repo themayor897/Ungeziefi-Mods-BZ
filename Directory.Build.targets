@@ -1,0 +1,17 @@
+<Project>
+
+    <!-- Always package into Release/<Game>/..., and copy into the game only if its directory is configured -->
+    <Target Name="Package" AfterTargets="Build">
+        <PropertyGroup>
+            <PluginFolder>BepInEx\plugins\$(TargetName)</PluginFolder>
+        </PropertyGroup>
+
+        <Copy SourceFiles="$(TargetPath)"
+              DestinationFolder="$(MSBuildThisFileDirectory)Release\$(Game)\$(PluginFolder)"/>
+
+        <Copy SourceFiles="$(TargetPath)"
+              DestinationFolder="$(GameDir)\$(PluginFolder)"
+              Condition="'$(GameDir)' != '' And Exists('$(GameDir)')"/>
+    </Target>
+
+</Project>
