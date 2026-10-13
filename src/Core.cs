@@ -31,6 +31,18 @@ public class RotatableLadders
         return IsTop(t) ? pos + new Vector3Int(0, 3, 0) : pos - new Vector3Int(0, 3, 0);
     }
 
+    // The only game-specific part: Subnautica registers a rebindable input, Below Zero's older input system doesn't
+    // support that, so it uses a keybind option from the config menu
+#if SUBNAUTICA
+    private static string RotateKeyName => GameInput.FormatButton(Main.RotateLadderButton);
+    private static bool RotatePressed => GameInput.GetButtonDown(Main.RotateLadderButton);
+#elif BELOWZERO
+    private static string RotateKeyName => Main.Config.RotateKey.ToString();
+    private static bool RotatePressed => Input.GetKeyDown(Main.Config.RotateKey);
+#else
+#error Define SUBNAUTICA or BELOWZERO
+#endif
+
     // InOutQuad ease, always the short 90 degree arc
     private static IEnumerator RotateSmoothly(Transform t, float targetY, Vector3Int key)
     {
@@ -108,9 +120,9 @@ public class RotatableLadders
         if (activeRotations.Contains(key)) return;
 
         HandReticle.main.SetText(HandReticle.TextType.HandSubscript,
-            $"Press {GameInput.FormatButton(Main.RotateLadderButton)} to rotate", false);
+            $"Press {RotateKeyName} to rotate", false);
 
-        if (GameInput.GetButtonDown(Main.RotateLadderButton)) ApplyRotation(parent);
+        if (RotatePressed) ApplyRotation(parent);
     }
 
     [HarmonyPatch(typeof(BaseLadder), nameof(BaseLadder.Start))]

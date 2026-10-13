@@ -1,5 +1,8 @@
 ﻿using Nautilus.Json;
 using Nautilus.Options.Attributes;
+#if BELOWZERO
+using UnityEngine;
+#endif
 
 namespace Ungeziefi.Rotatable_Ladders;
 
@@ -7,6 +10,10 @@ namespace Ungeziefi.Rotatable_Ladders;
 public class Config : ConfigFile
 {
     [Toggle(Label = "Enable feature")] public bool EnableFeature = true;
+
+#if BELOWZERO
+    [Keybind(Label = "Rotate ladder")] public KeyCode RotateKey = KeyCode.R;
+#endif
 
     [Toggle(Label = "Empty hands only",
         Tooltip = "When enabled, the rotation prompt will only appear when you're not holding any tools or items.")]

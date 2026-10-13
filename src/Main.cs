@@ -3,7 +3,9 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Nautilus.Handlers;
+#if SUBNAUTICA
 using InputPaths = Nautilus.Handlers.GameInputHandler.Paths;
+#endif
 
 namespace Ungeziefi.Rotatable_Ladders;
 
@@ -15,7 +17,9 @@ public class Main : BaseUnityPlugin
     public const string PLUGIN_NAME = "Rotatable Ladders";
     public const string PLUGIN_VERSION = "2.2.1";
 
+#if SUBNAUTICA
     public static GameInput.Button RotateLadderButton;
+#endif
 
     private static Assembly Assembly { get; } = Assembly.GetExecutingAssembly();
     internal new static ManualLogSource Logger { get; private set; }
@@ -29,12 +33,14 @@ public class Main : BaseUnityPlugin
         Logger = base.Logger;
         Logger.LogInfo($"Plugin {PLUGIN_GUID} is loaded!");
 
+#if SUBNAUTICA
         RotateLadderButton = EnumHandler.AddEntry<GameInput.Button>("RotateLadderButton")
             .CreateInput("Rotate ladder")
             .WithKeyboardBinding(InputPaths.Keyboard.R)
             .WithControllerBinding(InputPaths.Gamepad.DpadUp)
             .WithCategory("Rotatable Ladders")
             .AvoidConflicts();
+#endif
 
         Harmony.CreateAndPatchAll(Assembly, $"{PLUGIN_GUID}");
         SaveData = SaveDataHandler.RegisterSaveDataCache<SaveData>();
