@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using DG.Tweening;
+﻿using System.Collections;
+using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
 
@@ -31,6 +31,27 @@ public class RotatableLadders
         return IsTop(t) ? pos + new Vector3Int(0, 3, 0) : pos - new Vector3Int(0, 3, 0);
     }
 
+    // InOutQuad ease, always the short 90 degree arc
+    private static IEnumerator RotateSmoothly(Transform t, float targetY, Vector3Int key)
+    {
+        var from = t.localRotation;
+        var to = Quaternion.Euler(0f, targetY, 0f);
+        var duration = Main.Config.RotationDuration;
+
+        for (var elapsed = 0f; elapsed < duration; elapsed += Time.deltaTime)
+        {
+            if (t == null) break;
+
+            var p = elapsed / duration;
+            var eased = p < 0.5f ? 2f * p * p : 1f - Mathf.Pow(-2f * p + 2f, 2f) / 2f;
+            t.localRotation = Quaternion.Slerp(from, to, eased);
+            yield return null;
+        }
+
+        if (t != null) t.localRotation = to;
+        activeRotations.Remove(key);
+    }
+
     private static void ApplyRotation(Transform ladderTransform, bool isPartner = false)
     {
         if (ladderTransform == null) return;
@@ -47,9 +68,7 @@ public class RotatableLadders
         {
             activeRotations.Add(key);
 
-            ladderTransform.DOLocalRotate(new Vector3(0, newY, 0), Main.Config.RotationDuration)
-                .SetEase(Ease.InOutQuad)
-                .OnComplete(() => { activeRotations.Remove(key); });
+            Main.Instance.StartCoroutine(RotateSmoothly(ladderTransform, newY, key));
         }
         else
         {

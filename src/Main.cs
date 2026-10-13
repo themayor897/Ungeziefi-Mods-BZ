@@ -21,9 +21,11 @@ public class Main : BaseUnityPlugin
     internal new static ManualLogSource Logger { get; private set; }
     internal new static Config Config { get; } = OptionsPanelHandler.RegisterModOptions<Config>();
     internal static SaveData SaveData { get; private set; }
+    internal static Main Instance { get; private set; }
 
     public void Awake()
     {
+        Instance = this;
         Logger = base.Logger;
         Logger.LogInfo($"Plugin {PLUGIN_GUID} is loaded!");
 
