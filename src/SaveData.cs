@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Nautilus.Json;
 
-namespace Ungeziefi.Rotatable_Ladders;
+namespace Rotatable_Ladders;
 
 public class SaveData : SaveDataCache
 {

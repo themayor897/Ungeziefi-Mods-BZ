@@ -4,7 +4,7 @@
         <Game>SN</Game>
         <DefineConstants>$(DefineConstants);SUBNAUTICA</DefineConstants>
         <GameDir>$(SubnauticaDir)</GameDir>
-        <RootNamespace>Ungeziefi.Rotatable_Ladders</RootNamespace>
+        <RootNamespace>Rotatable_Ladders</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

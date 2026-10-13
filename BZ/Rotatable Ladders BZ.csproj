@@ -4,7 +4,7 @@
         <Game>BZ</Game>
         <GameDir>$(BelowZeroDir)</GameDir>
         <DefineConstants>$(DefineConstants);BELOWZERO</DefineConstants>
-        <RootNamespace>Ungeziefi.Rotatable_Ladders</RootNamespace>
+        <RootNamespace>Rotatable_Ladders</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

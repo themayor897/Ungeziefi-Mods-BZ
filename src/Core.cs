@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
 
-namespace Ungeziefi.Rotatable_Ladders;
+namespace Rotatable_Ladders;
 
 [HarmonyPatch]
 public class RotatableLadders

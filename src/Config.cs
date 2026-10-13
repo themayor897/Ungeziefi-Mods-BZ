@@ -4,7 +4,7 @@ using Nautilus.Options.Attributes;
 using UnityEngine;
 #endif
 
-namespace Ungeziefi.Rotatable_Ladders;
+namespace Rotatable_Ladders;
 
 [Menu("Rotatable Ladders")]
 public class Config : ConfigFile

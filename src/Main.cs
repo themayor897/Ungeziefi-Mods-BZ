@@ -7,13 +7,17 @@ using Nautilus.Handlers;
 using InputPaths = Nautilus.Handlers.GameInputHandler.Paths;
 #endif
 
-namespace Ungeziefi.Rotatable_Ladders;
+namespace Rotatable_Ladders;
 
 [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
 [BepInDependency("com.snmodding.nautilus")]
+#if SUBNAUTICA
+// The original Subnautica mod patches the same methods; running both would apply every patch twice
+[BepInIncompatibility("Ungeziefi.Rotatable_Ladders")]
+#endif
 public class Main : BaseUnityPlugin
 {
-    public const string PLUGIN_GUID = "Ungeziefi.Rotatable_Ladders";
+    public const string PLUGIN_GUID = "themayor897.Rotatable_Ladders";
     public const string PLUGIN_NAME = "Rotatable Ladders";
     public const string PLUGIN_VERSION = "2.2.1";
 
