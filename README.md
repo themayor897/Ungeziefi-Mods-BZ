@@ -1,67 +1,62 @@
-# Rotatable Ladders
+# Subnautica Mods: Ports
 
-Rotate base ladders in Subnautica and Subnautica: Below Zero. Look at a ladder, press the rotate key (default R), and it
-turns a quarter turn. Rotations are saved per save file.
-
-One source, two builds: `src/` is shared, and `SN/` and `BZ/` are thin projects that compile it for each game.
-
-| Game                   | Status                                                               |
-|------------------------|----------------------------------------------------------------------|
-| Subnautica: Below Zero | Tested in-game.                                                      |
-| Subnautica             | Builds. Not yet run in-game by this fork. Incompatible with the original mod (see below). |
+My ports of [Ungeziefi's](https://github.com/Ungeziefi/Subnautica-Mods) Subnautica mods to Subnautica: Below Zero,
+built from one source per mod so each can also ship for Subnautica.
 
 ## Credit
 
-This is a derivative work of **Rotatable Ladders by Ungeziefi**
-([Nexus Mods](https://www.nexusmods.com/subnautica/mods/2015),
-[source](https://github.com/Ungeziefi/Subnautica-Mods)), used under the GNU General Public License v3.
-The original commit history is preserved in this repository: every commit before the "Add license and README" commit is
-Ungeziefi's work. I am not the original author, and this is not the original author's release. Please send feedback
-about the original Subnautica mod to its page.
+Every mod here is a derivative work of a mod by **Ungeziefi**, used under the GNU General Public License v3. Each mod's
+original commit history is preserved in this repository, and the commits after it show exactly what I changed. I am not
+the original author and these are not the original author's releases. Please send feedback about the original
+Subnautica mods to their own pages.
 
-Built on [BepInEx](https://github.com/BepInEx/BepInEx), [Harmony](https://github.com/pardeike/Harmony) and
-[Nautilus](https://github.com/SubnauticaModding/Nautilus).
+## Mods
 
-## Changes from the original
+| Mod                                       | Below Zero      | Subnautica                   | Original                                                    |
+|-------------------------------------------|-----------------|------------------------------|-------------------------------------------------------------|
+| [Rotatable Ladders](Rotatable%20Ladders/) | Tested in-game  | Builds, not yet run in-game  | [Nexus](https://www.nexusmods.com/subnautica/mods/2015)     |
 
-The commits after "Add license and README" are the full list of changes, each as its own diff:
+## Layout
 
-- Sources moved to a shared `src/` folder with one project per game.
-- DOTween replaced by a coroutine for the smooth rotation. Below Zero doesn't ship DOTween, and this removes the bundled
-  DLL for Subnautica too.
-- Added a Below Zero build. The only game-specific code is the rotate input: Subnautica keeps its rebindable input
-  (keyboard R, controller D-pad up), while Below Zero's older input system gets a keybind option in the options menu
-  (default R, no controller binding).
-- Plugin GUID and namespace changed to `themayor897.Rotatable_Ladders` / `Rotatable_Ladders`. The Subnautica build is
-  marked incompatible with the original (`Ungeziefi.Rotatable_Ladders`) because both would patch the same methods. The
-  DLL name (`Rotatable_Ladders.dll`) and save data file name are unchanged.
+Each mod has its own folder containing:
 
-## Building
+- `src/`: shared source for both games
+- `SN/` and `BZ/`: thin projects that compile `src/` for Subnautica or Below Zero (`SUBNAUTICA` / `BELOWZERO` symbols
+  select the few game-specific lines)
+- `README.md` and `COC-CHECKLIST.md`: the mod's credit, changes, AI disclosure and Code of Conduct checklist
 
-Requires the .NET SDK. NuGet restores the game libraries and Nautilus.
+Shared build settings live in `Directory.Build.props` and `Directory.Build.targets` at the root. Builds are packaged into
+`Release/<SN|BZ>/BepInEx/plugins/...`. To also copy builds into a game install, copy
+`Directory.Build.local.props.example` to `Directory.Build.local.props` (not committed) and set the paths.
 
 ```bash
-dotnet build SN/"Rotatable Ladders SN.csproj" -c Release
-dotnet build BZ/"Rotatable Ladders BZ.csproj" -c Release
+dotnet build Ports.sln -c Release
 ```
 
-Output goes to `Release/SN/` and `Release/BZ/` as a ready-to-copy `BepInEx/plugins/...` folder. To also copy builds into
-your game folders, copy `Directory.Build.local.props.example` to `Directory.Build.local.props` and set the paths
-(that file is not committed).
+## Releases
 
-## How it works
+Each Nexus download is built from a tag named `<mod>-v<version>-<sn|bz>`, for example `rotatable-ladders-v2.3.0-bz`,
+which is named in that release's notes.
 
-Three Harmony patches in `src/Core.cs`: show the prompt and handle the key while looking at a ladder
-(`BaseLadder.OnHandHover`), re-apply saved rotations when a ladder loads (`BaseLadder.Start`), and clear saved data when
-a ladder is deconstructed (`BaseDeconstructable.Deconstruct`). Rotations are stored in the mod's own save file
-(`Rotatable_Ladders.json` in the save slot) and applied at runtime, so removing the mod resets ladders to default. The
-mod makes no network connections and touches no files other than its config and that save file.
+## Adding another port
+
+To keep the original history, split the mod out of a clone of Ungeziefi's repository and import it here:
+
+```bash
+# in a clone of Ungeziefi/Subnautica-Mods
+git subtree split -P "New Mods/<Mod Name>" -b split-<mod>
+
+# in this repository
+git subtree add --prefix="<Mod Name>" <path-to-that-clone> split-<mod>
+```
+
+Then restructure into `src/`, `SN/` and `BZ/` as separate, readable commits, and add the mod's README and checklist.
 
 ## AI disclosure
 
-The Below Zero port and the shared-source restructure were written with Claude Code (Anthropic). The original mod is
-Ungeziefi's. See [COC-CHECKLIST.md](COC-CHECKLIST.md) for the Subnautica Modding AI Code of Conduct checklist.
+The Below Zero ports and the shared-source structure are written with Claude Code (Anthropic). See each mod's
+`COC-CHECKLIST.md`.
 
 ## License
 
-GPLv3, see [LICENSE](LICENSE). The source for every release is this repository, at the tag named in the release notes.
+GPLv3, see [LICENSE](LICENSE).
