@@ -15,6 +15,7 @@ Subnautica mods to their own pages.
 | Mod                                       | Below Zero      | Subnautica                   | Original                                                    |
 |-------------------------------------------|-----------------|------------------------------|-------------------------------------------------------------|
 | [Rotatable Ladders](Rotatable%20Ladders/) | Tested in-game  | Builds, not yet run in-game  | [Nexus](https://www.nexusmods.com/subnautica/mods/2015)     |
+| [Better Scanner Blips Remake](Better%20Scanner%20Blips%20Remake/) | Builds, not yet run | Builds, not yet run | [Nexus](https://www.nexusmods.com/subnautica/mods/2281) |
 
 ## Layout
 
