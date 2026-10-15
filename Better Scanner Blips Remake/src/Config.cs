@@ -47,13 +47,26 @@ public class Config : ConfigFile
     [Toggle(Label = "Hide blips inside habitats")]
     public bool HideBlipsInsideHabitats = true;
 
+#if SUBNAUTICA
     [Toggle(Label = "Hide blips inside Cyclops")]
     public bool HideBlipsInsideCyclops = true;
+#elif BELOWZERO
+    // Below Zero has no Cyclops, so the equivalent is the Sea Truck. Off by default: the Cyclops default existed to
+    // keep the cockpit clear and hasn't been checked against the Sea Truck.
+    [Toggle(Label = "Hide blips inside Sea Truck")]
+    public bool HideBlipsInsideSeaTruck = false;
+#endif
 
     [Toggle(
         "<color=#FFAC09FF>Toggle controls</color> <alpha=#00>----------------------------------------------------------------------------</alpha>")]
     public bool ToggleControlsDivider;
 
+#if BELOWZERO
+    // Subnautica registers a rebindable input instead; Below Zero's older input system can't, so it's a config keybind
+    [Keybind(Label = "Toggle blips")]
+    public KeyCode ToggleBlipsKey = KeyCode.B;
+
+#endif
     [Toggle(Label = "Show blip toggle message")]
     public bool ShowBlipToggleMessage = false;
 

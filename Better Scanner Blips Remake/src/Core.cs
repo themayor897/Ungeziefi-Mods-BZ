@@ -18,9 +18,16 @@ public partial class BetterScannerBlipsRemake
     private static void uGUI_ResourceTracker_UpdateBlips(
         HashSet<ResourceTrackerDatabase.ResourceInfo> ___nodes,
         List<uGUI_ResourceTracker.Blip> ___blips,
+#if SUBNAUTICA
         bool ___visible)
     {
-        if (!___visible) return;
+        var visible = ___visible;
+#elif BELOWZERO
+        bool ___showGUI)
+    {
+        var visible = ___showGUI;
+#endif
+        if (!visible) return;
 
         resourcePool.Clear();
 
@@ -29,7 +36,7 @@ public partial class BetterScannerBlipsRemake
                                 || FreezeTime.HasFreezers()
                                 || Player.main.GetPDA().isOpen;
 
-        if (GameInput.GetButtonDown(Main.ToggleBlipsButton) && !isPausedOrLoading && !IsInHiddenLocation())
+        if (TogglePressed && !isPausedOrLoading && !IsInHiddenLocation())
         {
             blipsEnabled = !blipsEnabled;
             if (Main.Config.ShowBlipToggleMessage)
@@ -85,13 +92,25 @@ public partial class BetterScannerBlipsRemake
 
     #region Helpers
 
+#if SUBNAUTICA
+    private static bool TogglePressed => GameInput.GetButtonDown(Main.ToggleBlipsButton);
+#elif BELOWZERO
+    private static bool TogglePressed => Input.GetKeyDown(Main.Config.ToggleBlipsKey);
+#else
+#error Define SUBNAUTICA or BELOWZERO
+#endif
+
     private static bool IsInHiddenLocation()
     {
         var inHabitat = Main.Config.HideBlipsInsideHabitats && Player.main.IsInBase() &&
                         uGUI_CameraDrone.main.activeCamera == null;
-        var inCyclops = Main.Config.HideBlipsInsideCyclops && Player.main.IsInSubmarine();
+#if SUBNAUTICA
+        var inVehicle = Main.Config.HideBlipsInsideCyclops && Player.main.IsInSubmarine();
+#elif BELOWZERO
+        var inVehicle = Main.Config.HideBlipsInsideSeaTruck && Player.main._currentInterior is SeaTruckSegment;
+#endif
 
-        return inHabitat || inCyclops;
+        return inHabitat || inVehicle;
     }
 
     private static bool ShouldHideBlip(float distance)
