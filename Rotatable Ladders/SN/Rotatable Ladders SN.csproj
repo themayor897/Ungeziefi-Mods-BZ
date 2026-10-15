@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <AssemblyName>Rotatable_Ladders</AssemblyName>
         <Game>SN</Game>
         <DefineConstants>$(DefineConstants);SUBNAUTICA</DefineConstants>
         <GameDir>$(SubnauticaDir)</GameDir>

@@ -3,7 +3,6 @@
     <!-- Settings shared by the Subnautica and Below Zero projects -->
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
-        <AssemblyName>Rotatable_Ladders</AssemblyName>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>11</LangVersion>
         <TreatWarningsAsErrors>True</TreatWarningsAsErrors>

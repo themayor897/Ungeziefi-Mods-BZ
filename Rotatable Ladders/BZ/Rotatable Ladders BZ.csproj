@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <AssemblyName>Rotatable_Ladders</AssemblyName>
         <Game>BZ</Game>
         <GameDir>$(BelowZeroDir)</GameDir>
         <DefineConstants>$(DefineConstants);BELOWZERO</DefineConstants>
