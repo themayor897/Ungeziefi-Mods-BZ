@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rotatable Ladders SN", "Rot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rotatable Ladders BZ", "Rotatable Ladders\BZ\Rotatable Ladders BZ.csproj", "{3A796F53-DA10-4E08-8D9E-F48E873A10E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Better Scanner Blips Remake", "Better Scanner Blips Remake", "{D2EAEF24-FDCD-48AD-6DEE-904B7D9E4F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Better Scanner Blips Remake SN", "Better Scanner Blips Remake\SN\Better Scanner Blips Remake SN.csproj", "{DC7B8928-6105-4F28-874B-00549B88E206}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,18 @@ Global
 		{3A796F53-DA10-4E08-8D9E-F48E873A10E4}.Release|x64.Build.0 = Release|Any CPU
 		{3A796F53-DA10-4E08-8D9E-F48E873A10E4}.Release|x86.ActiveCfg = Release|Any CPU
 		{3A796F53-DA10-4E08-8D9E-F48E873A10E4}.Release|x86.Build.0 = Release|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Debug|x64.Build.0 = Debug|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Debug|x86.Build.0 = Debug|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Release|x64.ActiveCfg = Release|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Release|x64.Build.0 = Release|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC7B8928-6105-4F28-874B-00549B88E206}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,5 +66,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CD6F843A-9E21-4FC4-80A2-4F20F53427C9} = {3EEEDB51-B91E-F532-9E45-A8F60BE33BFC}
 		{3A796F53-DA10-4E08-8D9E-F48E873A10E4} = {3EEEDB51-B91E-F532-9E45-A8F60BE33BFC}
+		{DC7B8928-6105-4F28-874B-00549B88E206} = {D2EAEF24-FDCD-48AD-6DEE-904B7D9E4F27}
 	EndGlobalSection
 EndGlobal

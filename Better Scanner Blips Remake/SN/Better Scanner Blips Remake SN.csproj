@@ -1,27 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net472</TargetFramework>
         <AssemblyName>Better_Scanner_Blips_Remake</AssemblyName>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <LangVersion>11</LangVersion>
+        <Game>SN</Game>
+        <DefineConstants>$(DefineConstants);SUBNAUTICA</DefineConstants>
+        <GameDir>$(SubnauticaDir)</GameDir>
         <RootNamespace>Ungeziefi.Better_Scanner_Blips_Remake</RootNamespace>
-
-        <RestoreAdditionalProjectSources>
-            https://api.nuget.org/v3/index.json;
-            https://nuget.bepinex.dev/v3/index.json;
-        </RestoreAdditionalProjectSources>
-
-        <NoWarn>NU1903</NoWarn>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="..\src\**\*.cs" LinkBase="src"/>
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
@@ -40,7 +29,4 @@
         <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all"/>
     </ItemGroup>
 
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-      <Exec Command="&quot;$(SolutionDir)/deploy.sh&quot; &quot;$(TargetName)&quot; &quot;$(TargetPath)&quot; &quot;$(SolutionDir)&quot;" />
-    </Target>
 </Project>
