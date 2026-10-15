@@ -5,7 +5,7 @@
         <Game>BZ</Game>
         <DefineConstants>$(DefineConstants);BELOWZERO</DefineConstants>
         <GameDir>$(BelowZeroDir)</GameDir>
-        <RootNamespace>Ungeziefi.Better_Scanner_Blips_Remake</RootNamespace>
+        <RootNamespace>Better_Scanner_Blips_Remake</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

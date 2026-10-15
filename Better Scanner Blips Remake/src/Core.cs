@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UWE;
 
-namespace Ungeziefi.Better_Scanner_Blips_Remake;
+namespace Better_Scanner_Blips_Remake;
 
 [HarmonyPatch]
 public partial class BetterScannerBlipsRemake

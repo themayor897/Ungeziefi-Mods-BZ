@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Ungeziefi.Better_Scanner_Blips_Remake;
+namespace Better_Scanner_Blips_Remake;
 
 public static class ColorManagement
 {

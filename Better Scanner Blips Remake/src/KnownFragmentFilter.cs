@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using HarmonyLib;
 
-namespace Ungeziefi.Better_Scanner_Blips_Remake;
+namespace Better_Scanner_Blips_Remake;
 
 [HarmonyPatch]
 public class KnownFragmentFilter

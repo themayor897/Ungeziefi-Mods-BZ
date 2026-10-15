@@ -5,7 +5,7 @@
         <Game>SN</Game>
         <DefineConstants>$(DefineConstants);SUBNAUTICA</DefineConstants>
         <GameDir>$(SubnauticaDir)</GameDir>
-        <RootNamespace>Ungeziefi.Better_Scanner_Blips_Remake</RootNamespace>
+        <RootNamespace>Better_Scanner_Blips_Remake</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

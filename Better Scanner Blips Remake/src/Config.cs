@@ -2,7 +2,7 @@
 using Nautilus.Options.Attributes;
 using UnityEngine;
 
-namespace Ungeziefi.Better_Scanner_Blips_Remake;
+namespace Better_Scanner_Blips_Remake;
 
 [Menu("Better Scanner Blips Remake")]
 public class Config : ConfigFile

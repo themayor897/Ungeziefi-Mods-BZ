@@ -7,15 +7,19 @@ using Nautilus.Handlers;
 using InputPaths = Nautilus.Handlers.GameInputHandler.Paths;
 #endif
 
-namespace Ungeziefi.Better_Scanner_Blips_Remake;
+namespace Better_Scanner_Blips_Remake;
 
 [BepInPlugin(PLUGIN_GUID, PLUGIN_NAME, PLUGIN_VERSION)]
 [BepInDependency("com.snmodding.nautilus")]
 [BepInIncompatibility("BetterScannerBlips")]
 [BepInIncompatibility("com.whotnt.subnautica.dynamicscannerblips.mod")]
+#if SUBNAUTICA
+// The original Subnautica mod patches the same methods; running both would apply every patch twice
+[BepInIncompatibility("Ungeziefi.Better_Scanner_Blips_Remake")]
+#endif
 public class Main : BaseUnityPlugin
 {
-    public const string PLUGIN_GUID = "Ungeziefi.Better_Scanner_Blips_Remake";
+    public const string PLUGIN_GUID = "themayor897.Better_Scanner_Blips_Remake";
     public const string PLUGIN_NAME = "Better Scanner Blips Remake";
     public const string PLUGIN_VERSION = "2.2.1";
 
